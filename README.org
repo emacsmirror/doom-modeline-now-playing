@@ -69,6 +69,18 @@ Include =now-playing= in your modeline configuration:
     '(now-playing objed-state misc-info persp-name battery grip irc mu4e gnus github debug repl lsp minor-modes input-method major-mode process vcs checker))
 #+end_src
 
+If you experience load order issues with the segment, you might have
+to wrap the above in =with-eval-after-load= or load doom-modeline after.
+
+e.g.
+
+#+begin_src emacs-lisp
+(with-eval-after-load 'doom-modeline-now-playing
+  (doom-modeline-def-modeline 'main
+    '(bar workspace-name window-number modals matches buffer-info remote-host buffer-position parrot selection-info)
+    '(now-playing objed-state misc-info persp-name battery grip irc mu4e gnus github debug repl lsp minor-modes input-method major-mode process vcs checker)))
+#+end_src
+
 * Configuration
 ** Global Settings
 #+begin_src emacs-lisp
